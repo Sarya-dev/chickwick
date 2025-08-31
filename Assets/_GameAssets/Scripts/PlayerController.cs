@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Movement Settings")]
     [SerializeField] private float _movementspeed;
+    [SerializeField] private KeyCode _movementkey;
 
 
     [Header("Jump Settings")]
@@ -23,13 +24,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float _downforce;
 
+    [Header("Sliding Settings")]
+    [SerializeField] private KeyCode _slidingkey;
+    [SerializeField] private float _slideMultiplier;
+    [SerializeField] private float _slideDrag;
+
     [Header("Ground Check Settings")]
     [SerializeField] private float _playerheight;
     [SerializeField] private LayerMask _groundlayer;
+    [SerializeField] private float _groundDrag;
 
 
 
-
+    private bool _isSliding;
 
     private Rigidbody _PlayerRigidbody;
 
@@ -51,6 +58,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         SetInputs();
+        SetDrag();
+        LimitSpeed();
     }
     private void FixedUpdate()
     {
@@ -62,24 +71,56 @@ public class PlayerController : MonoBehaviour
     {
         _verticalinput = Input.GetAxisRaw("Vertical");
         _horizantalinput = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKey(_jumpkey) && _canjump && IsGrounded())
+
+        if (Input.GetKeyDown(_slidingkey))
+        {
+            Debug.Log("Player Sliding");
+            _isSliding = true;
+        }
+        else if (Input.GetKeyDown(_movementkey))
+        {
+            Debug.Log("Player moving");
+            _isSliding = false;
+        }
+        else if (Input.GetKey(_jumpkey) && _canjump && IsGrounded())
         {
             //guş uçuyor
             _canjump = false;
-            
-
             SetPlayerJumping();
             Invoke(nameof(ResetJumping), _jumpcooldown);
 
 
         }
     }
+    private void SetDrag()
+    {
+        if (_isSliding)
+        {
+            _PlayerRigidbody.linearDamping = _slideDrag;
+        }
+        else
+        {
+            _PlayerRigidbody.linearDamping = _groundDrag;
+        }
+    }
+    private void LimitSpeed()
+    {
+        Vector3 flatvelocity = new Vector3(_PlayerRigidbody.linearVelocity.x, 0f, _PlayerRigidbody.linearVelocity.z);
+        if (flatvelocity.magnitude > _movementspeed)
+        {
+            Vector3 limitedvelocity = flatvelocity.normalized *_movementspeed;
+            _PlayerRigidbody.linearVelocity = new Vector3(limitedvelocity.x, _PlayerRigidbody.linearVelocity.y, limitedvelocity.z);
+        }
+    }
     private void SetPlayerMovement()
     {
         _movementDirection = _orientationTransform.forward * _verticalinput +
         _orientationTransform.right * _horizantalinput;
-
-        _PlayerRigidbody.AddForce(_movementDirection.normalized * _movementspeed, ForceMode.Force);
+        if (_isSliding)
+        {
+            _PlayerRigidbody.AddForce(_movementDirection.normalized * _movementspeed * _slideMultiplier, ForceMode.Force);
+        }
+        else { _PlayerRigidbody.AddForce(_movementDirection.normalized * _movementspeed, ForceMode.Force); }
     }
     private void SetPlayerJumping()
     {
