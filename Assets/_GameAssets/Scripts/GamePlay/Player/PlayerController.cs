@@ -1,7 +1,12 @@
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
+
+
 {
+    public event Action OnPLayerJumped;
+    
     [Header("References")]
     [SerializeField] private Transform _orientationTransform;
 
@@ -51,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _StateController=GetComponent<StateController>();
+        _StateController = GetComponent<StateController>();
         _PlayerRigidbody = GetComponent<Rigidbody>();
         _PlayerRigidbody.freezeRotation = true;
 
@@ -127,7 +132,7 @@ public class PlayerController : MonoBehaviour
             _ when movementeDirection != Vector3.zero && ısGrounded && !isSliding => PlayerState.Move,
             _ when movementeDirection != Vector3.zero && ısGrounded && isSliding => PlayerState.Slide,
             _ when movementeDirection == Vector3.zero && ısGrounded && isSliding => PlayerState.SlideIdle,
-            _ when !_canjump && !ısGrounded =>PlayerState.Jump,
+            _ when !_canjump && !ısGrounded => PlayerState.Jump,
             _ => currentState
 
         };
@@ -151,13 +156,15 @@ public class PlayerController : MonoBehaviour
 
         };
 
-       _PlayerRigidbody.AddForce(_movementDirection.normalized * _movementspeed * _forcemultiplier, ForceMode.Force);
-     
+        _PlayerRigidbody.AddForce(_movementDirection.normalized * _movementspeed * _forcemultiplier, ForceMode.Force);
+
     }
     private void SetPlayerJumping()
     {
+        OnPLayerJumped?.Invoke();
         _PlayerRigidbody.linearVelocity = new Vector3(_PlayerRigidbody.linearVelocity.x, 0f, _PlayerRigidbody.linearVelocity.z);
         _PlayerRigidbody.AddForce(transform.up * _jumpforce, ForceMode.Impulse);
+
     }
     private void ResetJumping()
     {
