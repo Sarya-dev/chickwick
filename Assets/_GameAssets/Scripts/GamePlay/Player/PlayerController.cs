@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 
 {
     public event Action OnPLayerJumped;
-    
+
     [Header("References")]
     [SerializeField] private Transform _orientationTransform;
 
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _groundDrag;
 
 
+    private float _startingspeed, _startingjumpforce;
 
     private bool _isSliding;
     private StateController _StateController;
@@ -59,6 +60,8 @@ public class PlayerController : MonoBehaviour
         _StateController = GetComponent<StateController>();
         _PlayerRigidbody = GetComponent<Rigidbody>();
         _PlayerRigidbody.freezeRotation = true;
+        _startingspeed = _movementspeed;
+        _startingjumpforce = _jumpforce;
 
 
     }
@@ -170,6 +173,7 @@ public class PlayerController : MonoBehaviour
     {
         _canjump = true;
     }
+    #region Helper functions
 
     private bool IsGrounded()
     {
@@ -191,4 +195,21 @@ public class PlayerController : MonoBehaviour
     {
         return _isSliding;
     }
+    public void SetMovementSpeed(float speed, float duration)
+    {
+        _movementspeed += speed;
+        Invoke(nameof(ResetMovementspeed), duration);
+    }
+    private void ResetMovementspeed()
+    {
+        _movementspeed = _startingspeed;
+    }
+    public void SetJumpForce(float force, float duration) {
+        _jumpforce += force;
+        Invoke(nameof(ResetJumpForce), duration);
+    }
+    private void ResetJumpForce() {
+        _jumpforce = _startingjumpforce;
+    }
+    #endregion
 }
