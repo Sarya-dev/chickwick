@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 
 {
     public event Action OnPLayerJumped;
+    public event Action<PlayerState> OnPlayerStateChanged;
 
     [Header("References")]
     [SerializeField] private Transform _orientationTransform;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
         if (newState != currentState)
         {
             _StateController.ChangeState(newState);
+            OnPlayerStateChanged?.Invoke(newState);
         }
 
     }
