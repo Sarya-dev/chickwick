@@ -204,12 +204,19 @@ public class PlayerController : MonoBehaviour
     {
         _movementspeed = _startingspeed;
     }
-    public void SetJumpForce(float force, float duration) {
+    public void SetJumpForce(float force, float duration)
+    {
         _jumpforce += force;
         Invoke(nameof(ResetJumpForce), duration);
     }
-    private void ResetJumpForce() {
+    private void ResetJumpForce()
+    {
         _jumpforce = _startingjumpforce;
     }
-    #endregion
+    public Rigidbody GetPlayerRigidbody()
+    {
+        return _PlayerRigidbody;
+    } 
+    
+        #endregion
 }

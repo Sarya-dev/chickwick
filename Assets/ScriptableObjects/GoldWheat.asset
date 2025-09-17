@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2916b64521fea340aa63f915cf96d1b, type: 3}
   m_Name: GoldWheat
   m_EditorClassIdentifier: 
-  _incrreaseDecreaseMultiplier: 0
-  _resetBoostDuration: 0
+  _incrreaseDecreaseMultiplier: 15
+  _resetBoostDuration: 5
