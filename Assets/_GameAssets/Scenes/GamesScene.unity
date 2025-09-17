@@ -1702,6 +1702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1301709708}
+  - component: {fileID: 1301709709}
   - component: {fileID: 1301709707}
   m_Layer: 0
   m_Name: GoldWheat
@@ -1747,6 +1748,21 @@ Transform:
   - {fileID: 5366588491963903482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301709709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301709706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f762fbb8073ee1b41ac029e68f6bfb59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 2078690279}
+  _movementspeedIncrease: 15
+  _resetduration: 5
 --- !u!1 &1318184321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1568449761}
+  - component: {fileID: 1568449762}
   - component: {fileID: 1568449760}
   m_Layer: 0
   m_Name: HolyWheat
@@ -2051,6 +2068,21 @@ Transform:
   - {fileID: 109428521}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568449762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568449759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b70d6dd255ad556428600a6b48b9494c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 2078690279}
+  _jumpForceIncrease: 8
+  _resetduration: 5
 --- !u!1 &1654385015
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,6 +2092,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1654385017}
+  - component: {fileID: 1654385018}
   - component: {fileID: 1654385016}
   m_Layer: 0
   m_Name: RottenWheat
@@ -2105,6 +2138,21 @@ Transform:
   - {fileID: 1353946474}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654385018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654385015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c31379033b09f2408a54f172708cd77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 2078690279}
+  _movementspeedDecrease: -25
+  _resetduration: 5
 --- !u!1 &1803472971
 GameObject:
   m_ObjectHideFlags: 0
