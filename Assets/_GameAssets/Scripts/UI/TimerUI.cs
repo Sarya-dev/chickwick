@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
@@ -12,8 +13,9 @@ public class TimerUI : MonoBehaviour
     [SerializeField] private Ease _rotationEase;
 
     private float _elapsedTime;
-    private bool _isTimerRunning ;
+    private bool _isTimerRunning;
     private Tween _rotationTween;
+    private string _finalTime;
     private void Start()
     {
         PlayRotationAnimation();
@@ -25,17 +27,20 @@ public class TimerUI : MonoBehaviour
     {
         switch (gameState)
         {
-            case GameState.pause:            
-                PauseTimer();
+            case GameState.pause:
+                StopTimer();
                 break;
             case GameState.resume:
-                ResumeTimer();   
-                break;    
+                ResumeTimer();
+                break;
+            case GameState.gameover:
+                FinishTimer();
+                break;
         }
     }
     private void PlayRotationAnimation()
     {
-        _rotationTween= _timerTransform.DORotate(new Vector3(0f, 0f, -360f), _rotationDuration, RotateMode.FastBeyond360)
+        _rotationTween = _timerTransform.DORotate(new Vector3(0f, 0f, -360f), _rotationDuration, RotateMode.FastBeyond360)
             .SetEase(_rotationEase)
             .SetLoops(-1, LoopType.Restart);
     }
@@ -43,17 +48,16 @@ public class TimerUI : MonoBehaviour
     {
         _isTimerRunning = true;
         _elapsedTime = 0f;
-         UptaderTimerUi(); 
         InvokeRepeating(nameof(UptaderTimerUi), 0f, 1f);
-       
+
     }
 
-    private void PauseTimer()
+    private void StopTimer()
     {
         _isTimerRunning = false;
         CancelInvoke(nameof(UptaderTimerUi));
-         _rotationTween.Pause();
-        
+        _rotationTween.Pause();
+
     }
     private void ResumeTimer()
     {
@@ -64,6 +68,20 @@ public class TimerUI : MonoBehaviour
             _rotationTween.Play();
         }
     }
+    private void FinishTimer()
+    {
+        StopTimer();
+        _finalTime = GetFormattedElapsedTime();
+
+    }
+
+    private string GetFormattedElapsedTime()
+    {
+        int minutes = Mathf.FloorToInt(_elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
     private void UptaderTimerUi()
     {
         if (!_isTimerRunning) { return; }
@@ -71,5 +89,9 @@ public class TimerUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(_elapsedTime / 60f);
         int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
         _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    } 
+    public string GetFinalTime()
+    {
+        return _finalTime;
     }
 }
