@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "firstgame.sln"
+    "dotnet.defaultSolution": "chickwick.sln"
 }

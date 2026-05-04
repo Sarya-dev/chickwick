@@ -7,6 +7,11 @@ public class Consts
         public const string GAME_SCENE = "yeniScene";
 
     }
+    public struct Layers
+    {
+        public const string GROUND_LAYER = "Ground";
+        public const string FLOOR_LAYER = "floor";
+    }
 
     public struct PlayerAnimations
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+
 public class PlayerController : MonoBehaviour
 
 
@@ -230,6 +231,24 @@ public class PlayerController : MonoBehaviour
     public Rigidbody GetPlayerRigidbody()
     {
         return _PlayerRigidbody;
+    } 
+
+    public bool CanCatChase()
+    {
+        if(Physics.Raycast(transform.position,Vector3.down,out RaycastHit hit,
+         _playerheight * 0.5f + 0.2f, _groundlayer))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.FLOOR_LAYER))
+            {
+                return true;
+            }
+            else if(hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.GROUND_LAYER))
+            {
+                return false;
+            }
+
+        }
+        return false;
     } 
     
     
