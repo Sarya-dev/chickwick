@@ -5,6 +5,10 @@ public class Consts
     public struct SceneNames
     {
         public const string GAME_SCENE = "yeniScene";
+        public const string MENU_SCENE="MenuScene";
+        public const string CREDITS_SCENE="CreditsScene";
+        
+        public const string HOWTOPLAY_SCENE="HowToScene";
 
     }
     public struct Layers
