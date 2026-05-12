@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using MaskTransitions;
 
 public class SettingsUI : MonoBehaviour
 {
@@ -25,6 +26,11 @@ public class SettingsUI : MonoBehaviour
         _settingsPopUpObject.transform.localScale = Vector3.zero;
         _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         _resumeButton.onClick.AddListener(OnResumeButtonClicked);
+        _mainMenuButton.onClick.AddListener(() =>
+        {
+            TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
+           
+        });
 
     }
 

@@ -1,3 +1,5 @@
+using MaskTransitions;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,17 +18,19 @@ public class MenuControllerUI : MonoBehaviour
     {
         _playButton.onClick.AddListener(() =>
         {
-           SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE); 
+           TransitionManager.Instance.LoadLevel(Consts.SceneNames.GAME_SCENE);
         });
 
         _howToPlayButton.onClick.AddListener(() =>
         {
-           SceneManager.LoadScene(Consts.SceneNames.HOWTOPLAY_SCENE); 
+            TransitionManager.Instance.LoadLevel(Consts.SceneNames.HOWTOPLAY_SCENE);
+            
         });
 
         _creditsButton.onClick.AddListener(() =>
         {
-           SceneManager.LoadScene(Consts.SceneNames.CREDITS_SCENE); 
+            TransitionManager.Instance.LoadLevel(Consts.SceneNames.CREDITS_SCENE);
+          
         });
 
         _quitButton.onClick.AddListener(() =>

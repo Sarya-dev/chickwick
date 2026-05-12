@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using MaskTransitions;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class MainMenuUI : MonoBehaviour
        
         _mainMenuButton.onClick.AddListener(() =>
         {
-           SceneManager.LoadScene(Consts.SceneNames.MENU_SCENE); 
+            TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
+           
         });
     }
 
