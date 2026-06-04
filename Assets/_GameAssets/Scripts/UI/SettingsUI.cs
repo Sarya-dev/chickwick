@@ -26,8 +26,8 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private float _animationDuration;
     private Image _blackBackgroundImage;
 
-    private bool _isMusicOn;
-    private bool _isSoundOn; 
+    private bool _isMusicOn = true;
+    private bool _isSoundOn = true; 
 
     private void Awake()
     {
@@ -46,13 +46,20 @@ public class SettingsUI : MonoBehaviour
         _soundButton.onClick.AddListener(OnSoundButtonClicked);
 
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && _settingsPopUpObject.activeSelf)
+        {
+            OnResumeButtonClicked();
+        }
+    }
 
     private void OnMusicButtonClicked()
     {
         AudioManager.Instance.Play(SoundType.ButtonClickSound);
         _isMusicOn = !_isMusicOn;
         _musicButton.image.sprite = _isMusicOn ? _musicOnSprite : _musicOffSprite;
-        AudioManager.Instance.SetSoundEffectsMute(!_isMusicOn);
+        BackgroundMusic.Instance.SetMusicMute(!_isMusicOn);
     }
 
     private void OnSoundButtonClicked()

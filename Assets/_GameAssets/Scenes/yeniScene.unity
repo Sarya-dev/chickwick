@@ -3077,6 +3077,10 @@ MonoBehaviour:
   _soundButton: {fileID: 1468199526}
   _resumeButton: {fileID: 1617536536}
   _mainMenuButton: {fileID: 1782717249}
+  _musicOnSprite: {fileID: 21300000, guid: 572d015c0604b0b49b09265a1072b1d4, type: 3}
+  _musicOffSprite: {fileID: 21300000, guid: 5f1b2ea972b168448b4c057a28eb7f2a, type: 3}
+  _soundOnSprite: {fileID: 21300000, guid: b70c31f4b7494cf40ad2dfcb839120cf, type: 3}
+  _soundOffSprite: {fileID: 21300000, guid: 11231ee54f9eb5948b175a2a69b0d050, type: 3}
   _animationDuration: 0.3
 --- !u!1 &459094768 stripped
 GameObject:
@@ -6146,6 +6150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 945546954}
+  - component: {fileID: 945546959}
   - component: {fileID: 945546957}
   - component: {fileID: 945546956}
   - component: {fileID: 945546955}
@@ -6280,6 +6285,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &945546959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945546953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 007663a90e48e4f4aae10b99599ee5f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &952275908 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1241952927726810357, guid: 69ef6ec9a0720ab4181a382ad028a657, type: 3}

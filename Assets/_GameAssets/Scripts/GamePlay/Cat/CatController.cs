@@ -35,6 +35,14 @@ public class CatController : MonoBehaviour
     }
     void Start()
     {
+        if (GameManager.Instance.GetCurrentGameState() != GameState.play
+        && GameManager.Instance.GetCurrentGameState() != GameState.resume 
+        && GameManager.Instance.GetCurrentGameState() != GameState.CutScene)
+        {
+            _catAgent.speed=0f;
+            return;
+
+        }
         _initialPosition = transform.position;
         SetRandomDestination();
         
