@@ -30,16 +30,18 @@ public class GameManager : MonoBehaviour
     private void CatController_OnCatCatched()
     {
         _playerHeathUI.AnimateDamageForAll();
-        StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver(true));
     }
 
     private void HealthManager_OnPlayerDeath()
     {
-        StartCoroutine(OnGameOver()); 
+        StartCoroutine(OnGameOver(false)); 
     }
     private void OnEnable()
     {
         changeGameState(GameState.CutScene);
+        BackgroundMusic.Instance.PlayBackgroundMusic(true);
+
     }
     public void changeGameState(GameState gameState)
     {
@@ -60,12 +62,15 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    private IEnumerator OnGameOver()
+    private IEnumerator OnGameOver(bool isCatCatched)
     {
         yield return new WaitForSeconds(_delay);
         changeGameState(GameState.gameover);
         _winLoseUI.OnGameLose();
-        
+        if (isCatCatched)
+        {
+        AudioManager.Instance.Play(SoundType.CatSound); 
+        }
     }
    
     public GameState GetCurrentGameState()

@@ -25,6 +25,7 @@ public class HolyWheatCollectible : MonoBehaviour, ICollectibles
         _playerStateUI.PlayerBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage,
          _playerStateUI.GetHolyBoosterWheatImage,_wheatDesignSO.ActiveSprite, _wheatDesignSO.PassiveSprite,
          _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite,_wheatDesignSO.ResetBoostDuration);
+        AudioManager.Instance.Play(SoundType.PickupGoodSound);
 
         Destroy(this.gameObject);
     }

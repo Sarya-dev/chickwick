@@ -22,6 +22,7 @@ public class RottenWheatCollectible : MonoBehaviour, ICollectibles
         _playerStateUI.PlayerBoosterUIAnimations(_playerBoosterTransform, _playerBoosterImage,
          _playerStateUI.GetRottenBoosterWheatImage,_wheatDesignSO.ActiveSprite, _wheatDesignSO.PassiveSprite,
          _wheatDesignSO.ActiveWheatSprite, _wheatDesignSO.PassiveWheatSprite,_wheatDesignSO.ResetBoostDuration);
+        AudioManager.Instance.Play(SoundType.PickupBadSound);
 
         Destroy(this.gameObject);
     }
