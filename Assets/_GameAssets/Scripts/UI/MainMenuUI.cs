@@ -14,7 +14,7 @@ public class MainMenuUI : MonoBehaviour
        
         _mainMenuButton.onClick.AddListener(() =>
         {
-        AudioManager.Instance.Play(SoundType.ButtonClickSound);
+            AudioManager.Instance.Play(SoundType.ButtonClickSound);
             TransitionManager.Instance.LoadLevel(Consts.SceneNames.MENU_SCENE);
            
         });
