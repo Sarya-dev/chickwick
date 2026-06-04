@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        changeGameState(GameState.play);
+        changeGameState(GameState.CutScene);
     }
     public void changeGameState(GameState gameState)
     {

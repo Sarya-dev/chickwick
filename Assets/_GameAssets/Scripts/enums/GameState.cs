@@ -6,5 +6,6 @@ public enum GameState
     pause,
     resume,
     gameover,
+    CutScene
    
 }

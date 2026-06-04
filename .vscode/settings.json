@@ -56,5 +56,9 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "firstgame.sln"
+    "dotnet.defaultSolution": "firstgame.sln",
+    "workbench.colorCustomizations": {
+        "minimap.background": "#00000000",
+        "scrollbar.shadow": "#00000000"
+    }
 }

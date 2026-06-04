@@ -176,9 +176,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hareket : wasd\nz\u0131plama: space\n\n\n(bide boosterlar var etrafta
-    toplay\u0131p bakab\u0131l\u0131rs\u0131n\u0131z ne ise yariyorlar diye)\n\n\namac:
-    yumurta topla kediye yakalanmadan yada ateslere carpmadan "
+  m_text: "Hareket : wasd\nz\u0131plama: space\n(bide boosterlar var etrafta toplay\u0131p
+    bakab\u0131l\u0131rs\u0131n\u0131z ne ise yariyorlar diye)\namac: yumurta topla
+    kediye yakalanmadan yada ateslere carpmadan "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3379ed3dfc7399243b97d7ebf1a7e7bc, type: 2}
   m_sharedMaterial: {fileID: -5819861958094325516, guid: 3379ed3dfc7399243b97d7ebf1a7e7bc, type: 2}
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
-  m_lineSpacingMax: 0
+  m_lineSpacingMax: -2.7
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 842815377, guid: 929ae98e75db95a45b1e96b78bbf67ac, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
